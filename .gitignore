@@ -1,21 +1,20 @@
 node_modules/
+.next/
+out/
+.vercel/
+coverage/
+build/
+*.tsbuildinfo
+next-env.d.ts
+.env*
+.env*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# Next.js app in web/
-web/node_modules/
-web/.next/
-web/out/
-web/.pnp
-web/.yarn/
-web/coverage/
-web/build/
-web/.vercel
-web/*.tsbuildinfo
-web/next-env.d.ts
-web/.env*
-web/npm-debug.log*
-web/yarn-debug.log*
-web/yarn-error.log*
-web/.pnpm-debug.log*
+# Old location (safe to delete locally after pull)
+web/
 
 .DS_Store
 *.pem
