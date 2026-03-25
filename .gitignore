@@ -13,8 +13,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# Old location (safe to delete locally after pull)
-web/
+# Legacy ./web folder (stub only — app lives at repo root)
+web/node_modules/
+web/.next/
 
 .DS_Store
 *.pem
