@@ -1,0 +1,19 @@
+# Next.js app in web/
+web/node_modules/
+web/.next/
+web/out/
+web/.pnp
+web/.yarn/
+web/coverage/
+web/build/
+web/.vercel
+web/*.tsbuildinfo
+web/next-env.d.ts
+web/.env*
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+web/.pnpm-debug.log*
+
+.DS_Store
+*.pem
