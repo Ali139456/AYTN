@@ -1,0 +1,10 @@
+{
+  "name": "aytn",
+  "private": true,
+  "description": "Root package.json so Vercel can detect Next.js while the app lives in ./web",
+  "dependencies": {
+    "next": "16.2.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  }
+}
