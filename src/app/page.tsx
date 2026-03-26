@@ -72,7 +72,6 @@ export default function Home() {
       <HowItWorksSection />
       <BusinessSection />
       <HomeMarketHighlightStrip />
-      <CtaSection />
     </main>
   );
 }
@@ -120,7 +119,7 @@ function HeroSection() {
             </Link>
             <Link
               href="/phone"
-              className="inline-flex items-center justify-center rounded-xl border border-zinc-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-zinc-900 backdrop-blur transition hover:border-zinc-400 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900/80 dark:text-zinc-100 dark:hover:border-zinc-600"
+              className="inline-flex items-center justify-center rounded-xl border border-zinc-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-zinc-900 backdrop-blur transition-colors duration-200 hover:border-zinc-400 hover:bg-white/80 hover:text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900/80 dark:text-zinc-100 dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80 dark:hover:text-zinc-100"
             >
               Browse phone numbers
             </Link>
@@ -386,36 +385,6 @@ function BusinessSection() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CtaSection() {
-  return (
-    <section className="bg-zinc-950 py-20 text-white">
-      <div className="mx-auto max-w-4xl px-4 text-center">
-        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Ready to see what’s available at your place?
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
-          Start with an address check — then layer phone, domains, and IT as
-          you need them. No obligation to explore what’s on offer.
-        </p>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="/internet"
-            className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-100"
-          >
-            Check availability
-          </Link>
-          <Link
-            href="/domains"
-            className="inline-flex items-center justify-center rounded-xl border border-zinc-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-zinc-500 hover:bg-white/5"
-          >
-            Search domains
-          </Link>
         </div>
       </div>
     </section>

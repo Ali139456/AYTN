@@ -1,104 +1,212 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { EveryPageMarketPanels } from "@/components/market-style-panels";
+import { AddressCheckCard } from "@/components/services/AddressCheckCard";
+import { FeatureBand } from "@/components/services/FeatureBand";
+import { PricingTrio } from "@/components/services/PricingTrio";
+import { InternetServiceHero } from "@/components/services/ServiceHero";
+import {
+  InternetHeroVisual,
+  TrustStripDefault,
+} from "@/components/services/ServiceVisuals";
 
 export const metadata: Metadata = {
   title: "Internet & NBN",
   description:
-    "Check your address for nbn® and other technologies, choose home or business plans, and add modems — like leading Australian providers.",
+    "nbn® and business internet for Australia — check your address, compare plans in AUD, unlimited data options.",
 };
+
+const plans = [
+  {
+    badge: "Smart choice",
+    headline: "25 / 5",
+    price: "$74.90",
+    priceNote: "/mth",
+    topFeatures: [
+      { icon: "✈", text: "Typical evening speed suitable for browsing & email" },
+      { icon: "◉", text: "Unlimited data on selected plans*" },
+      { icon: "🔓", text: "No lock-in contract on eligible offers*" },
+    ],
+    bottomFeatures: [
+      "Unlimited data across Australia (where included)",
+      "Modem optional — BYO or rent",
+      "Add VoIP & local numbers from our phone hub",
+      "Australian support team",
+    ],
+    viewHref: "/internet#plans",
+    buyHref: "/internet#checkout",
+  },
+  {
+    badge: "Most popular",
+    popular: true,
+    headline: "50 / 20",
+    price: "$89.90",
+    priceNote: "/mth",
+    topFeatures: [
+      { icon: "✈", text: "Great for streaming & working from home" },
+      { icon: "◉", text: "Unlimited data on selected plans*" },
+      { icon: "🔓", text: "No lock-in contract on eligible offers*" },
+    ],
+    bottomFeatures: [
+      "Typical busy period speeds published per plan",
+      "Wi‑Fi 6 hardware available",
+      "Static IP options for business",
+      "nbn® fault escalation support",
+    ],
+    viewHref: "/internet#plans",
+    buyHref: "/internet#checkout",
+  },
+  {
+    badge: "Power user",
+    headline: "100 / 20",
+    price: "$109.90",
+    priceNote: "/mth",
+    topFeatures: [
+      { icon: "✈", text: "Heavy downloads, 4K, and large households" },
+      { icon: "◉", text: "Unlimited data on selected plans*" },
+      { icon: "🔓", text: "No lock-in contract on eligible offers*" },
+    ],
+    bottomFeatures: [
+      "Highest tier your address can support",
+      "Priority provisioning where available",
+      "Bundle with Microsoft 365 via IT services",
+      "Same address check as Aussie retail ISPs",
+    ],
+    viewHref: "/internet#plans",
+    buyHref: "/internet#checkout",
+  },
+] as const;
+
+function IconWifi() {
+  return (
+    <svg className="mx-auto h-14 w-14" viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="44" r="4" fill="currentColor" />
+      <path
+        d="M12 28c8-8 32-8 40 0M18 34c6-6 22-6 28 0M24 40c4-4 12-4 16 0"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function IconHome() {
+  return (
+    <svg className="mx-auto h-14 w-14" viewBox="0 0 64 64" fill="none">
+      <path
+        d="M12 28L32 12l20 16v28H12V28z"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinejoin="round"
+      />
+      <path d="M24 40h16v16H24z" fill="currentColor" opacity=".25" />
+    </svg>
+  );
+}
+
+function IconSpeed() {
+  return (
+    <svg className="mx-auto h-14 w-14" viewBox="0 0 64 64" fill="none">
+      <rect
+        x="18"
+        y="12"
+        width="28"
+        height="40"
+        rx="4"
+        stroke="currentColor"
+        strokeWidth="2.5"
+      />
+      <path
+        d="M28 22h12M28 30h8"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M32 38l4 8h-8l4-8z"
+        fill="#2563eb"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
+    </svg>
+  );
+}
+
+function IconLock() {
+  return (
+    <svg className="mx-auto h-14 w-14" viewBox="0 0 64 64" fill="none">
+      <rect
+        x="16"
+        y="26"
+        width="32"
+        height="26"
+        rx="3"
+        stroke="currentColor"
+        strokeWidth="2.5"
+      />
+      <path
+        d="M22 26V18a10 10 0 0120 0v8"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export default function InternetPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-16">
-      <div className="mx-auto max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-300">
-          Internet · nbn® · fibre
-        </p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Internet &amp; NBN — availability first
-        </h1>
-        <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-          Just like{" "}
-          <a
-            href="https://www.aussiebroadband.com.au/"
-            className="font-medium text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Aussie Broadband
-          </a>{" "}
-          and other retail ISPs, we start with <strong>your address</strong> and{" "}
-          <strong>property type</strong> so you only see plans that can actually
-          be delivered — nbn®, fixed wireless, fibre where available, and more.
-        </p>
-      </div>
+    <div className="bg-zinc-50 pb-20 dark:bg-zinc-950">
+      <InternetServiceHero
+        eyebrow="Connect with confidence"
+        title="Australia's address-first"
+        titleHighlight="nbn® & business internet"
+        description="We check your line before you buy — home or business, in AUD, with plans matched to what's actually available at your premises. The same journey customers expect from leading Aussie ISPs."
+        primaryCta={{ href: "#address-check", label: "Check my address" }}
+        secondaryCta={{ href: "/phone", label: "Add a phone number" }}
+        visual={<InternetHeroVisual />}
+        trustStrip={<TrustStripDefault />}
+      />
 
-      <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 dark:border-zinc-800 dark:bg-zinc-900/40 sm:p-8">
-        <h2 className="text-lg font-semibold text-zinc-950 dark:text-white">
-          Check what&apos;s available at your place
-        </h2>
-        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-          Enter your full address, choose <strong>home</strong> or{" "}
-          <strong>business</strong> (ABN for business where required), then
-          compare download/upload speeds, unlimited data options, and hardware.
-        </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div>
-            <label className="block text-xs font-medium text-zinc-500">
-              Address
-            </label>
-            <div className="mt-1 rounded-lg border border-dashed border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-400 dark:border-zinc-600 dark:bg-zinc-950">
-              Start typing your street address…
-            </div>
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-zinc-500">
-              Property type
-            </label>
-            <div className="mt-1 flex gap-2">
-              <span className="inline-flex flex-1 items-center justify-center rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm font-medium dark:border-zinc-600 dark:bg-zinc-950">
-                Home
-              </span>
-              <span className="inline-flex flex-1 items-center justify-center rounded-lg border border-dashed border-zinc-300 px-3 py-2.5 text-sm text-zinc-500 dark:border-zinc-600">
-                Business
-              </span>
-            </div>
-          </div>
+      <div className="mx-auto max-w-6xl px-4 pt-10">
+        <div id="address-check">
+          <AddressCheckCard />
         </div>
-        <p className="mt-4 text-xs text-zinc-500">
-          Live lookup connects to your availability API (e.g. Vocus) from the
-          server — keys never ship to the browser.
-        </p>
-      </div>
 
-      <div className="mx-auto mt-12 max-w-3xl">
-        <h2 className="text-xl font-semibold text-zinc-950 dark:text-white">
-          Plans, modems, and voice add-ons
-        </h2>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-zinc-700 dark:text-zinc-300">
-          <li>
-            Plans filtered by what your address can support — no generic
-            catalogue that doesn&apos;t apply.
-          </li>
-          <li>
-            Optional nbn®-compatible modem/routers and phone adapters, similar to
-            add-on flows on major provider sites.
-          </li>
-          <li>
-            Bundle <Link href="/phone" className="font-medium text-violet-700 underline-offset-2 hover:underline dark:text-violet-400">VoIP or a new local number</Link>{" "}
-            by state and area after you&apos;ve locked in internet.
-          </li>
-        </ul>
-        <p className="mt-6 text-sm text-zinc-500">
-          API route:{" "}
-          <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-950">
-            POST /api/internet/availability
-          </code>
-        </p>
-      </div>
+        <div id="plans">
+          <PricingTrio
+            sectionTitle="Plans built for Australian homes & offices"
+            sectionSubtitle="Illustrative pricing in Australian dollars — final speeds and monthly charges depend on your address and wholesale agreement."
+            plans={plans}
+          />
+        </div>
 
-      <EveryPageMarketPanels />
+        <FeatureBand
+          headline="Enjoy straightforward nbn® shopping with local support"
+          subheadline="Turbocharged where the network allows, wallet-friendly where it matters — AYTN keeps your connectivity aligned with how Australians actually buy internet."
+          features={[
+            {
+              title: "Address truth first",
+              body: "No generic catalogue — only plans your line can support.",
+              icon: <IconHome />,
+            },
+            {
+              title: "Speed when you need it",
+              body: "Scale from essential to high-speed tiers as your household or team grows.",
+              icon: <IconSpeed />,
+            },
+            {
+              title: "Unbeatable clarity",
+              body: "AUD pricing, typical evening speeds, and inclusions spelled out upfront.",
+              icon: <IconWifi />,
+            },
+            {
+              title: "Flexible contracts",
+              body: "Choose offers with no lock-in where available — stay because it works.",
+              icon: <IconLock />,
+            },
+          ]}
+        />
+      </div>
     </div>
   );
 }

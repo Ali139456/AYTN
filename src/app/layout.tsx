@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { PreFooterCta } from "@/components/pre-footer-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
@@ -37,12 +38,13 @@ export default function RootLayout({
       {/* suppressHydrationWarning: browser extensions (e.g. cz-shortcut-listen) mutate <body> before hydrate */}
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-zinc-50 text-zinc-950 dark:bg-black dark:text-zinc-50"
+        className="min-h-full flex flex-col bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50"
       >
         <SiteHeader />
         <div className="flex flex-1 flex-col bg-white dark:bg-zinc-950">
           {children}
         </div>
+        <PreFooterCta />
         <SiteFooter />
       </body>
     </html>

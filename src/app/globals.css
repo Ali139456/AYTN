@@ -14,8 +14,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Align with Tailwind zinc-950 / zinc-50 (layout + components) */
+    --background: #09090b;
+    --foreground: #fafafa;
   }
 }
 

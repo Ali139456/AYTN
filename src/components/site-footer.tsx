@@ -12,7 +12,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950">
       <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <p className="text-sm font-semibold text-zinc-950 dark:text-white">
               AYTN Services
@@ -23,7 +23,7 @@ export function SiteFooter() {
             </p>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
               Services
             </p>
             <ul className="mt-3 space-y-2 text-sm">
@@ -40,7 +40,7 @@ export function SiteFooter() {
             </ul>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
               Get started
             </p>
             <ul className="mt-3 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
@@ -62,38 +62,9 @@ export function SiteFooter() {
               </li>
             </ul>
           </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-              Market references
-            </p>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://www.aussiebroadband.com.au/"
-                  className="text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Aussie Broadband — address-led plans
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://enginnumbers.com.au/"
-                  className="text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Engin Numbers — geographic numbers
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
         <p className="mt-10 border-t border-zinc-200 pt-8 text-center text-xs text-zinc-500 dark:border-zinc-800">
-          © {new Date().getFullYear()} AYTN Services Pty Ltd · All Your
-          Telecommunication Needs. References are for UX comparison only; AYTN
-          is independent and not affiliated with third-party brands.
+          © {new Date().getFullYear()} AYTN Services Pty Ltd
         </p>
       </div>
     </footer>
