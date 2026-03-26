@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/motion/reveal";
 import { AddressCheckCard } from "@/components/services/AddressCheckCard";
 import { FeatureBand } from "@/components/services/FeatureBand";
 import { PricingTrio } from "@/components/services/PricingTrio";
@@ -167,10 +168,12 @@ export default function InternetPage() {
         trustStrip={<TrustStripDefault />}
       />
 
-      <div className="mx-auto max-w-6xl px-4 pt-10">
-        <div id="address-check">
-          <AddressCheckCard />
-        </div>
+      <div className="mx-auto max-w-6xl space-y-10 px-4 pt-10">
+        <Reveal>
+          <div id="address-check">
+            <AddressCheckCard />
+          </div>
+        </Reveal>
 
         <div id="plans">
           <PricingTrio

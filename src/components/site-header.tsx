@@ -1,8 +1,11 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+
+import { motionEase } from "@/components/motion/reveal";
 
 const nav = [
   { href: "/internet", label: "Internet & NBN" },
@@ -29,6 +32,7 @@ function CloseIcon() {
 }
 
 export function SiteHeader() {
+  const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -103,7 +107,12 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-zinc-200/90 bg-white shadow-[0_1px_0_rgba(0,0,0,0.04)] dark:border-zinc-800 dark:bg-zinc-950">
+      <motion.header
+        className="sticky top-0 z-50 border-b border-zinc-200/90 bg-white shadow-[0_1px_0_rgba(0,0,0,0.04)] dark:border-zinc-800 dark:bg-zinc-950"
+        initial={reduce ? false : { y: -72, opacity: 0 }}
+        animate={reduce ? undefined : { y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: motionEase }}
+      >
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-3 lg:py-4">
           <Link
             href="/"
@@ -149,7 +158,7 @@ export function SiteHeader() {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
       {mobileOverlay ? createPortal(mobileOverlay, document.body) : null}
     </>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/motion/reveal";
 import { FeatureBand } from "@/components/services/FeatureBand";
 import { PricingTrio } from "@/components/services/PricingTrio";
 import { OutagesServiceHero } from "@/components/services/ServiceHero";
@@ -143,7 +144,8 @@ export default function OutagesPage() {
         trustStrip={<TrustStripDefault />}
       />
 
-      <div className="mx-auto max-w-6xl px-4 pt-10">
+      <div className="mx-auto max-w-6xl space-y-10 px-4 pt-10">
+        <Reveal>
         <section
           id="board"
           className="mt-6 overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-6 shadow-2xl sm:p-10"
@@ -175,6 +177,7 @@ export default function OutagesPage() {
             </div>
           </div>
         </section>
+        </Reveal>
 
         <div id="subscribe">
           <PricingTrio

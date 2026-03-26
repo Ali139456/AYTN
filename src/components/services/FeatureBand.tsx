@@ -1,4 +1,9 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+
+import { motionEase, staggerContainer, staggerItem } from "@/components/motion/reveal";
 
 export type FeatureItem = {
   title: string;
@@ -15,8 +20,18 @@ export function FeatureBand({
   subheadline: string;
   features: readonly FeatureItem[];
 }) {
+  const reduce = useReducedMotion();
+  const gridVariants = reduce ? { hidden: {}, show: {} } : staggerContainer;
+  const itemVariants = reduce ? { hidden: {}, show: {} } : staggerItem;
+
   return (
-    <section className="mt-12 rounded-2xl border border-zinc-200/80 bg-gradient-to-b from-sky-50/90 to-zinc-50 px-4 py-10 sm:mt-16 sm:rounded-3xl sm:px-8 sm:py-14 md:mt-20 md:px-10 md:py-16 dark:border-zinc-800 dark:from-sky-950/25 dark:to-zinc-950/50">
+    <motion.section
+      className="mt-12 rounded-2xl border border-zinc-200/80 bg-gradient-to-b from-sky-50/90 to-zinc-50 px-4 py-10 sm:mt-16 sm:rounded-3xl sm:px-8 sm:py-14 md:mt-20 md:px-10 md:py-16 dark:border-zinc-800 dark:from-sky-950/25 dark:to-zinc-950/50"
+      initial={reduce ? false : { opacity: 0, y: 28 }}
+      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12, margin: "0px 0px -10% 0px" }}
+      transition={{ duration: 0.5, ease: motionEase }}
+    >
       <div className="mx-auto max-w-5xl text-center">
         <h2 className="text-lg font-bold italic leading-snug text-zinc-900 sm:text-xl md:text-2xl lg:text-[1.65rem] dark:text-white">
           {headline}
@@ -25,10 +40,17 @@ export function FeatureBand({
           {subheadline}
         </p>
       </div>
-      <div className="mx-auto mt-8 grid max-w-6xl gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-6">
+      <motion.div
+        className="mx-auto mt-8 grid max-w-6xl gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-6"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.08, margin: "0px 0px -8% 0px" }}
+        variants={gridVariants}
+      >
         {features.map((f) => (
-          <article
+          <motion.article
             key={f.title}
+            variants={itemVariants}
             className="group flex flex-col items-center rounded-2xl border border-zinc-200/60 bg-white/80 p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-700/60 dark:bg-zinc-900/50"
           >
             <div className="mb-4 flex h-24 w-full items-center justify-center text-blue-700/90 dark:text-blue-400/90">
@@ -40,9 +62,9 @@ export function FeatureBand({
             <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               {f.body}
             </p>
-          </article>
+          </motion.article>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

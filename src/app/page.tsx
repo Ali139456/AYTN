@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { HomeTrustStrip } from "@/components/home-trust-strip";
 import { HomeMarketHighlightStrip } from "@/components/market-style-panels";
+import { Reveal, RevealStagger, RevealStaggerItem } from "@/components/motion/reveal";
 
 export const metadata: Metadata = {
   description:
@@ -67,7 +69,7 @@ export default function Home() {
   return (
     <main className="overflow-hidden">
       <HeroSection />
-      <TrustStrip />
+      <HomeTrustStrip />
       <ServicesSection />
       <HowItWorksSection />
       <BusinessSection />
@@ -93,7 +95,7 @@ function HeroSection() {
       />
 
       <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-14 pt-12 sm:gap-10 sm:pb-20 sm:pt-16 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:pb-28 lg:pt-20">
-        <div className="min-w-0">
+        <Reveal className="min-w-0" delay={0.02}>
           <p className="inline-flex max-w-full items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase leading-tight tracking-wider text-blue-700 sm:px-3 sm:text-xs dark:text-blue-300">
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
             <span className="truncate sm:whitespace-normal">AYTN Services Pty Ltd</span>
@@ -138,15 +140,15 @@ function HeroSection() {
               Domains, hosting &amp; M365
             </li>
           </ul>
-        </div>
+        </Reveal>
 
-        <div className="relative mt-2 min-h-[260px] w-full min-w-0 sm:min-h-[300px] lg:mt-0 lg:min-h-[420px]">
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-600/10 via-zinc-100/80 to-cyan-500/10 p-px sm:rounded-3xl dark:from-blue-500/10 dark:via-zinc-900/80 dark:to-cyan-500/10">
-            <div className="h-full rounded-[20px] bg-white/90 p-5 shadow-2xl shadow-zinc-900/5 backdrop-blur sm:rounded-[23px] sm:p-8 dark:bg-zinc-900/90 dark:shadow-black/40">
+        <Reveal className="relative mt-2 w-full min-w-0 lg:mt-0 lg:min-h-[420px]" delay={0.1}>
+          <div className="relative w-full rounded-2xl bg-gradient-to-br from-blue-600/10 via-zinc-100/80 to-cyan-500/10 p-px sm:rounded-3xl dark:from-blue-500/10 dark:via-zinc-900/80 dark:to-cyan-500/10 lg:absolute lg:inset-0 lg:min-h-[420px]">
+            <div className="flex flex-col rounded-[20px] bg-white/90 p-5 shadow-2xl shadow-zinc-900/5 backdrop-blur sm:rounded-[23px] sm:p-8 dark:bg-zinc-900/90 dark:shadow-black/40 lg:h-full lg:min-h-0">
               <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 What you can do here
               </p>
-              <ul className="mt-6 space-y-5">
+              <ul className="mt-4 space-y-3 sm:mt-6 sm:space-y-5">
                 {[
                   "See what internet types exist at your address",
                   "Compare plans and modem options side by side",
@@ -156,7 +158,7 @@ function HeroSection() {
                 ].map((line) => (
                   <li
                     key={line}
-                    className="flex gap-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+                    className="flex gap-2.5 text-[13px] leading-snug text-zinc-700 sm:gap-3 sm:text-sm sm:leading-relaxed dark:text-zinc-300"
                   >
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-400">
                       <svg
@@ -177,37 +179,15 @@ function HeroSection() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 rounded-2xl border border-zinc-200/80 bg-zinc-50/80 p-4 dark:border-zinc-700/80 dark:bg-zinc-950/50">
-                <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              <div className="mt-5 rounded-2xl border border-zinc-200/80 bg-zinc-50/80 p-3.5 dark:border-zinc-700/80 dark:bg-zinc-950/50 sm:mt-8 sm:p-4">
+                <p className="text-[11px] font-medium leading-snug text-zinc-500 sm:text-xs dark:text-zinc-400">
                   Prefer everything in one journey? Start with your address —
                   we’ll guide you through internet, optional phone, and add-ons.
                 </p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TrustStrip() {
-  const items = [
-    "Built for Australian homes & SMBs",
-    "Clear availability before you buy",
-    "Status & outages in one view",
-  ] as const;
-  return (
-    <section className="border-b border-zinc-200 bg-white py-8 dark:border-zinc-800 dark:bg-zinc-950 sm:py-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-6 px-4 sm:flex-row sm:flex-wrap sm:justify-between sm:gap-8">
-        {items.map((text) => (
-          <p
-            key={text}
-            className="text-center text-sm font-medium text-zinc-600 dark:text-zinc-400"
-          >
-            {text}
-          </p>
-        ))}
+        </Reveal>
       </div>
     </section>
   );
@@ -217,7 +197,7 @@ function ServicesSection() {
   return (
     <section className="border-b border-zinc-200 bg-zinc-50 py-14 dark:border-zinc-800 dark:bg-zinc-950/50 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl md:text-4xl dark:text-white">
             Everything you need to stay connected
           </h2>
@@ -225,10 +205,10 @@ function ServicesSection() {
             Pick a service to get started — each area is designed to work on its
             own or as part of a full connectivity stack.
           </p>
-        </div>
-        <ul className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+        </Reveal>
+        <RevealStagger className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {services.map((item) => (
-            <li key={item.href}>
+            <RevealStaggerItem key={item.href} className="h-full min-w-0">
               <Link
                 href={item.href}
                 className="group flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:border-blue-500/30 hover:shadow-md hover:shadow-blue-500/5 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-blue-400/25"
@@ -259,9 +239,9 @@ function ServicesSection() {
                   </svg>
                 </span>
               </Link>
-            </li>
+            </RevealStaggerItem>
           ))}
-        </ul>
+        </RevealStagger>
       </div>
     </section>
   );
@@ -271,7 +251,7 @@ function HowItWorksSection() {
   return (
     <section className="border-b border-zinc-200 bg-white py-14 dark:border-zinc-800 dark:bg-zinc-950 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl md:text-4xl dark:text-white">
             From address to online — simplified
           </h2>
@@ -279,22 +259,19 @@ function HowItWorksSection() {
             Our core flow mirrors what you’d expect from leading Aussie
             providers: know what’s available, then choose what fits.
           </p>
-        </div>
-        <ol className="mt-10 grid gap-6 sm:mt-14 sm:gap-8 lg:grid-cols-3">
-          {steps.map((s) => (
-            <li
-              key={s.step}
-              className="relative rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 dark:border-zinc-800 dark:bg-zinc-900/40 sm:p-8"
-            >
-              <span className="text-4xl font-bold tabular-nums text-blue-600/30 dark:text-blue-400/30">
-                {s.step}
-              </span>
-              <h3 className="mt-2 text-xl font-semibold text-zinc-950 dark:text-white">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {s.body}
-              </p>
+        </Reveal>
+        <ol className="mt-10 grid list-none gap-6 sm:mt-14 sm:gap-8 lg:grid-cols-3">
+          {steps.map((s, i) => (
+            <li key={s.step} className="min-w-0">
+              <Reveal delay={i * 0.08} className="h-full">
+                <div className="relative h-full rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 dark:border-zinc-800 dark:bg-zinc-900/40 sm:p-8">
+                  <span className="text-4xl font-bold tabular-nums text-blue-600/30 dark:text-blue-400/30">
+                    {s.step}
+                  </span>
+                  <h3 className="mt-2 text-xl font-semibold text-zinc-950 dark:text-white">{s.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{s.body}</p>
+                </div>
+              </Reveal>
             </li>
           ))}
         </ol>
@@ -307,7 +284,7 @@ function BusinessSection() {
   return (
     <section className="border-b border-zinc-200 bg-zinc-50 py-14 dark:border-zinc-800 dark:bg-zinc-950/50 sm:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <div className="min-w-0">
+        <Reveal className="min-w-0">
           <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl md:text-4xl dark:text-white">
             Built for businesses that outgrow DIY
           </h2>
@@ -359,8 +336,8 @@ function BusinessSection() {
               />
             </svg>
           </Link>
-        </div>
-        <div className="relative">
+        </Reveal>
+        <Reveal className="relative" delay={0.1} variant="scale">
           <div className="aspect-[4/3] overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-blue-700 to-cyan-600 p-8 shadow-2xl shadow-blue-900/20 dark:shadow-black/50">
             <div className="flex h-full flex-col justify-between rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur">
               <div>
@@ -385,7 +362,7 @@ function BusinessSection() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

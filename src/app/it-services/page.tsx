@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/motion/reveal";
 import { FeatureBand } from "@/components/services/FeatureBand";
 import { PricingTrio } from "@/components/services/PricingTrio";
 import { ItServiceHero } from "@/components/services/ServiceHero";
@@ -152,7 +153,8 @@ export default function ItServicesPage() {
         trustStrip={<TrustStripDefault />}
       />
 
-      <div className="mx-auto max-w-6xl px-4 pt-10">
+      <div className="mx-auto max-w-6xl space-y-10 px-4 pt-10">
+        <Reveal>
         <section
           id="contact"
           className="mt-6 rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-lg dark:border-zinc-700 dark:bg-zinc-900 sm:p-10"
@@ -168,6 +170,7 @@ export default function ItServicesPage() {
             Leave your details and we&apos;ll reply with next steps and timing.
           </p>
         </section>
+        </Reveal>
 
         <div id="plans">
           <PricingTrio

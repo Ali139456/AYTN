@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/motion/reveal";
 import { FeatureBand } from "@/components/services/FeatureBand";
 import { PricingTrio } from "@/components/services/PricingTrio";
 import { DomainsServiceHero } from "@/components/services/ServiceHero";
@@ -168,7 +169,8 @@ export default function DomainsPage() {
         trustStrip={<TrustStripDefault />}
       />
 
-      <div className="mx-auto max-w-6xl px-4 pt-10">
+      <div className="mx-auto max-w-6xl space-y-10 px-4 pt-10">
+        <Reveal>
         <section
           id="search"
           className="mt-6 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg dark:border-zinc-700 dark:bg-zinc-900 sm:p-10"
@@ -188,6 +190,7 @@ export default function DomainsPage() {
             </button>
           </div>
         </section>
+        </Reveal>
 
         <div id="plans">
           <PricingTrio

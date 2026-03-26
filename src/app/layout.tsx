@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { PreFooterCta } from "@/components/pre-footer-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -40,6 +41,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-full overflow-x-hidden flex flex-col bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50"
       >
+        <ScrollProgress />
         <SiteHeader />
         <div className="flex flex-1 flex-col bg-white dark:bg-zinc-950">
           {children}

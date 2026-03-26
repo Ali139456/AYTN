@@ -1,7 +1,10 @@
 "use client";
 
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+
+import { motionEase, staggerContainer, staggerItem } from "@/components/motion/reveal";
 
 export type PricingPlan = {
   badge: string;
@@ -39,9 +42,9 @@ function planCardClassName(plan: PricingPlan) {
   }`;
 }
 
-function PricingPlanCard({ plan }: { plan: PricingPlan }) {
+function PricingPlanCard({ plan, variants }: { plan: PricingPlan; variants: Variants }) {
   return (
-    <article className={planCardClassName(plan)}>
+    <motion.article className={planCardClassName(plan)} variants={variants}>
       <div
         className={`py-3 text-center text-sm font-bold uppercase tracking-wide text-white ${
           plan.popular ? "bg-blue-600" : "bg-blue-500"
@@ -100,7 +103,7 @@ function PricingPlanCard({ plan }: { plan: PricingPlan }) {
           </Link>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
@@ -113,9 +116,13 @@ export function PricingTrio({
   sectionSubtitle?: string;
   plans: readonly PricingPlan[];
 }) {
+  const reduce = useReducedMotion();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+
+  const gridVariants: Variants = reduce ? { hidden: {}, show: {} } : staggerContainer;
+  const itemVariants: Variants = reduce ? { hidden: {}, show: {} } : staggerItem;
 
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
@@ -148,7 +155,13 @@ export function PricingTrio({
 
   return (
     <section className="mt-12 sm:mt-16 md:mt-20">
-      <div className="text-center">
+      <motion.div
+        className="text-center"
+        initial={reduce ? false : { opacity: 0, y: 22 }}
+        whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: motionEase }}
+      >
         <h2 className="px-2 text-xl font-bold leading-snug text-zinc-900 sm:text-2xl md:text-3xl dark:text-zinc-50">
           {sectionTitle}
         </h2>
@@ -160,7 +173,7 @@ export function PricingTrio({
         <p className="mt-1 text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
           Prices shown in AUD · incl. GST where applicable
         </p>
-      </div>
+      </motion.div>
 
       <div className="relative mt-10">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 flex w-11 items-center justify-start lg:hidden">
@@ -186,15 +199,19 @@ export function PricingTrio({
           </button>
         </div>
 
-        <div
+        <motion.div
           ref={scrollRef}
           onScroll={updateScrollState}
           className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-11 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:gap-6 lg:snap-none lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden"
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -8% 0px" }}
         >
           {plans.map((plan) => (
-            <PricingPlanCard key={plan.badge} plan={plan} />
+            <PricingPlanCard key={plan.badge} plan={plan} variants={itemVariants} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

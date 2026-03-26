@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Reveal } from "@/components/motion/reveal";
 import { FeatureBand } from "@/components/services/FeatureBand";
 import { PricingTrio } from "@/components/services/PricingTrio";
 import { PhoneServiceHero } from "@/components/services/ServiceHero";
@@ -154,7 +155,8 @@ export default function PhonePage() {
         trustStrip={<TrustStripDefault />}
       />
 
-      <div className="mx-auto max-w-6xl px-4 pt-10">
+      <div className="mx-auto max-w-6xl space-y-10 px-4 pt-10">
+        <Reveal>
         <section
           id="order"
           className="mt-6 rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-lg dark:border-zinc-700 dark:bg-zinc-900 sm:p-10"
@@ -184,6 +186,7 @@ export default function PhonePage() {
             when you want one bill.
           </p>
         </section>
+        </Reveal>
 
         <div id="plans">
           <PricingTrio
