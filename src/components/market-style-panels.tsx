@@ -113,10 +113,10 @@ export function HomeMarketHighlightStrip() {
     <section className="border-y border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-950/50">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+          <h2 className="text-xl font-semibold leading-snug tracking-tight text-zinc-950 sm:text-2xl md:text-3xl dark:text-white">
             The flows Australians already understand
           </h2>
-          <p className="mt-3 text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
             Check what&apos;s available at your address, then choose a plan. Pick
             phone numbers by <strong>state</strong> and <strong>local area</strong>{" "}
             — clear steps from start to finish.

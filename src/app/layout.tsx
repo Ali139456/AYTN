@@ -38,7 +38,7 @@ export default function RootLayout({
       {/* suppressHydrationWarning: browser extensions (e.g. cz-shortcut-listen) mutate <body> before hydrate */}
       <body
         suppressHydrationWarning
-        className="min-h-full flex flex-col bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50"
+        className="min-h-full overflow-x-hidden flex flex-col bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50"
       >
         <SiteHeader />
         <div className="flex flex-1 flex-col bg-white dark:bg-zinc-950">

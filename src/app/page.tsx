@@ -92,39 +92,39 @@ function HeroSection() {
         className="pointer-events-none absolute -left-24 bottom-0 -z-10 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl dark:bg-cyan-500/10"
       />
 
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-16 sm:pb-28 sm:pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
-        <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-            AYTN Services Pty Ltd
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-14 pt-12 sm:gap-10 sm:pb-20 sm:pt-16 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16 lg:pb-28 lg:pt-20">
+        <div className="min-w-0">
+          <p className="inline-flex max-w-full items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase leading-tight tracking-wider text-blue-700 sm:px-3 sm:text-xs dark:text-blue-300">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
+            <span className="truncate sm:whitespace-normal">AYTN Services Pty Ltd</span>
           </p>
-          <h1 className="mt-6 text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl sm:leading-[1.1] lg:text-6xl dark:text-white">
+          <h1 className="mt-5 text-[1.65rem] font-semibold leading-[1.15] tracking-tight text-zinc-950 sm:mt-6 sm:text-4xl sm:leading-[1.1] md:text-5xl lg:text-6xl dark:text-white">
             All your{" "}
             <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-400">
               telecommunication
             </span>{" "}
             needs, one place.
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-zinc-600 sm:mt-6 sm:text-lg dark:text-zinc-400">
             From NBN availability and plans to phone numbers, domains, hosting,
             and business IT — we help homes and Australian businesses get
             connected without the runaround.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex max-w-md flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:flex-wrap sm:gap-4">
             <Link
               href="/internet"
-              className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:w-auto sm:px-6"
             >
               Check address &amp; plans
             </Link>
             <Link
               href="/phone"
-              className="inline-flex items-center justify-center rounded-xl border border-zinc-300 bg-white/80 px-6 py-3.5 text-sm font-semibold text-zinc-900 backdrop-blur transition-colors duration-200 hover:border-zinc-400 hover:bg-white/80 hover:text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900/80 dark:text-zinc-100 dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80 dark:hover:text-zinc-100"
+              className="inline-flex w-full items-center justify-center rounded-xl border border-zinc-300 bg-white/80 px-5 py-3.5 text-sm font-semibold text-zinc-900 backdrop-blur transition-colors duration-200 hover:border-zinc-400 hover:bg-white/80 dark:border-zinc-700 dark:bg-zinc-900/80 dark:text-zinc-100 dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80 sm:w-auto sm:px-6"
             >
               Browse phone numbers
             </Link>
           </div>
-          <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-zinc-500 dark:text-zinc-500">
+          <ul className="mt-10 flex flex-col gap-2 text-xs text-zinc-500 sm:mt-12 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-3 sm:text-sm dark:text-zinc-500">
             <li className="flex items-center gap-2">
               <CheckMini />
               Location-based plan matching
@@ -140,9 +140,9 @@ function HeroSection() {
           </ul>
         </div>
 
-        <div className="relative lg:min-h-[420px]">
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-600/10 via-zinc-100/80 to-cyan-500/10 p-px dark:from-blue-500/10 dark:via-zinc-900/80 dark:to-cyan-500/10">
-            <div className="h-full rounded-[23px] bg-white/90 p-8 shadow-2xl shadow-zinc-900/5 backdrop-blur dark:bg-zinc-900/90 dark:shadow-black/40">
+        <div className="relative mt-2 min-h-[260px] w-full min-w-0 sm:min-h-[300px] lg:mt-0 lg:min-h-[420px]">
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-600/10 via-zinc-100/80 to-cyan-500/10 p-px sm:rounded-3xl dark:from-blue-500/10 dark:via-zinc-900/80 dark:to-cyan-500/10">
+            <div className="h-full rounded-[20px] bg-white/90 p-5 shadow-2xl shadow-zinc-900/5 backdrop-blur sm:rounded-[23px] sm:p-8 dark:bg-zinc-900/90 dark:shadow-black/40">
               <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                 What you can do here
               </p>
@@ -198,7 +198,7 @@ function TrustStrip() {
     "Status & outages in one view",
   ] as const;
   return (
-    <section className="border-b border-zinc-200 bg-white py-10 dark:border-zinc-800 dark:bg-zinc-950">
+    <section className="border-b border-zinc-200 bg-white py-8 dark:border-zinc-800 dark:bg-zinc-950 sm:py-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-6 px-4 sm:flex-row sm:flex-wrap sm:justify-between sm:gap-8">
         {items.map((text) => (
           <p
@@ -215,18 +215,18 @@ function TrustStrip() {
 
 function ServicesSection() {
   return (
-    <section className="border-b border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-950/50">
+    <section className="border-b border-zinc-200 bg-zinc-50 py-14 dark:border-zinc-800 dark:bg-zinc-950/50 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
+          <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl md:text-4xl dark:text-white">
             Everything you need to stay connected
           </h2>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 text-base text-zinc-600 sm:mt-4 sm:text-lg dark:text-zinc-400">
             Pick a service to get started — each area is designed to work on its
             own or as part of a full connectivity stack.
           </p>
         </div>
-        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {services.map((item) => (
             <li key={item.href}>
               <Link
@@ -269,22 +269,22 @@ function ServicesSection() {
 
 function HowItWorksSection() {
   return (
-    <section className="border-b border-zinc-200 bg-white py-20 dark:border-zinc-800 dark:bg-zinc-950">
+    <section className="border-b border-zinc-200 bg-white py-14 dark:border-zinc-800 dark:bg-zinc-950 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
+          <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl md:text-4xl dark:text-white">
             From address to online — simplified
           </h2>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 text-base text-zinc-600 sm:mt-4 sm:text-lg dark:text-zinc-400">
             Our core flow mirrors what you’d expect from leading Aussie
             providers: know what’s available, then choose what fits.
           </p>
         </div>
-        <ol className="mt-14 grid gap-8 lg:grid-cols-3">
+        <ol className="mt-10 grid gap-6 sm:mt-14 sm:gap-8 lg:grid-cols-3">
           {steps.map((s) => (
             <li
               key={s.step}
-              className="relative rounded-2xl border border-zinc-200 bg-zinc-50/80 p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
+              className="relative rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 dark:border-zinc-800 dark:bg-zinc-900/40 sm:p-8"
             >
               <span className="text-4xl font-bold tabular-nums text-blue-600/30 dark:text-blue-400/30">
                 {s.step}
@@ -305,13 +305,13 @@ function HowItWorksSection() {
 
 function BusinessSection() {
   return (
-    <section className="border-b border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-950/50">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <div>
-          <h2 className="text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
+    <section className="border-b border-zinc-200 bg-zinc-50 py-14 dark:border-zinc-800 dark:bg-zinc-950/50 sm:py-20">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="min-w-0">
+          <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl md:text-4xl dark:text-white">
             Built for businesses that outgrow DIY
           </h2>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 text-base text-zinc-600 sm:mt-4 sm:text-lg dark:text-zinc-400">
             When spreadsheets and ad-hoc providers stop scaling, you need a
             single partner for connectivity, voice, and cloud basics — without
             enterprise complexity or pricing.
@@ -367,7 +367,7 @@ function BusinessSection() {
                 <p className="text-sm font-medium text-white/90">
                   Your stack, simplified
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-white">
+                <p className="mt-2 text-xl font-semibold text-white sm:text-2xl">
                   One partner for connectivity &amp; cloud foundations.
                 </p>
               </div>

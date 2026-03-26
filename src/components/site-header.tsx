@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 const nav = [
   { href: "/internet", label: "Internet & NBN" },
@@ -8,45 +12,145 @@ const nav = [
   { href: "/outages", label: "Network status" },
 ] as const;
 
-export function SiteHeader() {
+function MenuIcon() {
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/90 bg-white px-4 pt-4 pb-3 shadow-[0_1px_0_rgba(0,0,0,0.04)] dark:border-zinc-800 dark:bg-zinc-950">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 items-center gap-x-3 gap-y-3 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:gap-y-0">
-        {/* Logo — left */}
-        <Link
-          href="/"
-          className="col-start-1 row-start-1 justify-self-start text-left text-lg font-bold uppercase tracking-[0.12em] text-zinc-950 transition-colors duration-200 hover:text-blue-600 dark:text-white dark:hover:text-cyan-400 sm:pl-1"
-        >
-          AYTN
-        </Link>
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}
 
-        {/* Contact — right; mirrors logo weight on large screens */}
-        <Link
-          href="/it-services#contact"
-          className="col-start-2 row-start-1 justify-self-end rounded-full border border-zinc-800 px-3.5 py-2 text-xs font-semibold text-zinc-900 transition-colors hover:bg-zinc-900 hover:text-white dark:border-white/45 dark:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-zinc-950 sm:col-start-3 sm:px-4 sm:text-sm"
-        >
-          Contact us
-        </Link>
+function CloseIcon() {
+  return (
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" d="M18 6L6 18M6 6l12 12" />
+    </svg>
+  );
+}
 
-        {/* Glass pill — centered under logo+CTA on small screens, middle column on sm+ */}
-        <nav
-          className="col-span-2 row-start-2 justify-self-center sm:col-span-1 sm:col-start-2 sm:row-start-1 sm:justify-self-center rounded-full border border-white/50 bg-white/45 px-3 py-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-xl backdrop-saturate-150 transition-shadow duration-300 hover:border-white/70 hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:border-white/10 dark:bg-zinc-950/45 dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] dark:hover:border-white/20 dark:hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)] sm:px-5 sm:py-2.5"
-          aria-label="Primary"
-        >
-          <ul className="flex flex-wrap items-center justify-center gap-x-1 gap-y-1 sm:gap-x-5 sm:gap-y-0">
+export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const mobileOverlay =
+    mounted && open ? (
+      <div
+        id="mobile-primary-nav"
+        className="fixed inset-0 z-[100] flex min-h-0 w-full max-w-none flex-col overflow-y-auto bg-zinc-950/98 backdrop-blur-sm lg:hidden"
+        aria-hidden={false}
+      >
+        <div className="flex h-full w-full min-w-0 flex-1 flex-col px-5 pb-10 pt-4">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
+              Menu
+            </span>
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl text-white"
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+            >
+              <CloseIcon />
+            </button>
+          </div>
+          <nav className="mt-6 flex flex-1 flex-col gap-1" aria-label="Primary mobile">
             {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block rounded-full px-2.5 py-1 text-center text-xs font-medium text-zinc-800 transition-all duration-200 ease-out hover:scale-[1.03] hover:bg-zinc-900/[0.07] hover:text-zinc-950 active:scale-[0.98] sm:px-3 sm:py-1.5 sm:text-sm dark:text-zinc-200 dark:hover:bg-white/[0.08] dark:hover:text-white dark:active:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent dark:focus-visible:ring-cyan-400/50"
-                >
-                  {item.label}
-                </Link>
-              </li>
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-xl px-4 py-3.5 text-base font-medium text-white transition-colors hover:bg-white/10"
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </Link>
             ))}
-          </ul>
-        </nav>
+          </nav>
+          <Link
+            href="/it-services#contact"
+            className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-white py-3.5 text-sm font-semibold text-zinc-950"
+            onClick={() => setOpen(false)}
+          >
+            Contact us
+          </Link>
+        </div>
       </div>
-    </header>
+    ) : null;
+
+  return (
+    <>
+      <header className="sticky top-0 z-50 border-b border-zinc-200/90 bg-white shadow-[0_1px_0_rgba(0,0,0,0.04)] dark:border-zinc-800 dark:bg-zinc-950">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-3 lg:py-4">
+          <Link
+            href="/"
+            className="shrink-0 text-left text-lg font-bold uppercase tracking-[0.12em] text-zinc-950 transition-colors duration-200 hover:text-blue-600 dark:text-white dark:hover:text-cyan-400 lg:justify-self-start lg:pl-1"
+          >
+            AYTN
+          </Link>
+
+          <nav
+            className="hidden rounded-full border border-white/50 bg-white/45 px-4 py-2 shadow-[0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/45 dark:shadow-[0_4px_24px_rgba(0,0,0,0.25)] lg:block lg:justify-self-center lg:px-5 lg:py-2.5"
+            aria-label="Primary"
+          >
+            <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-0">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="block rounded-full px-3 py-1.5 text-sm font-medium text-zinc-800 transition-colors hover:bg-zinc-900/[0.07] hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-white/[0.08] dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 dark:focus-visible:ring-cyan-400/50"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex shrink-0 items-center gap-2 lg:justify-self-end">
+            <Link
+              href="/it-services#contact"
+              className="inline-flex items-center justify-center rounded-full border border-zinc-800 px-3 py-2 text-xs font-semibold text-zinc-900 transition-colors hover:bg-zinc-900 hover:text-white dark:border-white/45 dark:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-zinc-950 sm:px-4 sm:text-sm"
+            >
+              Contact us
+            </Link>
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-300 text-zinc-900 lg:hidden dark:border-zinc-600 dark:text-white"
+              aria-expanded={open}
+              aria-controls="mobile-primary-nav"
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
+        </div>
+      </header>
+      {mobileOverlay ? createPortal(mobileOverlay, document.body) : null}
+    </>
   );
 }

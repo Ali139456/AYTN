@@ -16,16 +16,16 @@ export function FeatureBand({
   features: readonly FeatureItem[];
 }) {
   return (
-    <section className="mt-16 rounded-3xl border border-zinc-200/80 bg-gradient-to-b from-sky-50/90 to-zinc-50 px-6 py-14 sm:mt-20 sm:px-10 sm:py-16 dark:border-zinc-800 dark:from-sky-950/25 dark:to-zinc-950/50">
+    <section className="mt-12 rounded-2xl border border-zinc-200/80 bg-gradient-to-b from-sky-50/90 to-zinc-50 px-4 py-10 sm:mt-16 sm:rounded-3xl sm:px-8 sm:py-14 md:mt-20 md:px-10 md:py-16 dark:border-zinc-800 dark:from-sky-950/25 dark:to-zinc-950/50">
       <div className="mx-auto max-w-5xl text-center">
-        <h2 className="text-xl font-bold italic leading-snug text-zinc-900 sm:text-2xl lg:text-[1.65rem] dark:text-white">
+        <h2 className="text-lg font-bold italic leading-snug text-zinc-900 sm:text-xl md:text-2xl lg:text-[1.65rem] dark:text-white">
           {headline}
         </h2>
-        <p className="mx-auto mt-4 max-w-3xl text-sm text-zinc-600 sm:text-base dark:text-zinc-400">
+        <p className="mx-auto mt-3 max-w-3xl text-sm text-zinc-600 sm:mt-4 sm:text-base dark:text-zinc-400">
           {subheadline}
         </p>
       </div>
-      <div className="mx-auto mt-12 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+      <div className="mx-auto mt-8 grid max-w-6xl gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-6">
         {features.map((f) => (
           <article
             key={f.title}

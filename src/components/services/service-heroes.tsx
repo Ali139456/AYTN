@@ -13,7 +13,7 @@ export type ServiceHeroContent = {
 };
 
 const HERO_GRID =
-  "mx-auto grid min-h-[480px] w-full max-w-6xl grid-cols-1 items-center gap-10 px-4 py-16 sm:min-h-[520px] sm:gap-12 sm:py-20 lg:min-h-[560px] lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-24";
+  "mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 px-4 py-12 sm:min-h-[480px] sm:gap-10 sm:py-16 md:min-h-[520px] md:py-20 lg:min-h-[560px] lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-24";
 
 const HERO_ACCENT_LINE = {
   internet: "border-blue-600 dark:border-blue-400",
@@ -24,21 +24,22 @@ const HERO_ACCENT_LINE = {
 } as const;
 
 function heroCopyColumn(theme: keyof typeof HERO_ACCENT_LINE) {
-  return `border-l-4 pl-5 text-left sm:pl-7 ${HERO_ACCENT_LINE[theme]}`;
+  return `min-w-0 border-l-4 pl-4 text-left sm:pl-6 sm:pl-7 ${HERO_ACCENT_LINE[theme]}`;
 }
 
 const HERO_TITLE =
-  "mt-5 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl sm:leading-[1.15] lg:text-[2.75rem] lg:leading-[1.1] dark:text-white";
+  "mt-4 text-2xl font-semibold leading-tight tracking-tight text-zinc-950 sm:mt-5 sm:text-3xl sm:leading-[1.15] md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] dark:text-white";
 
 const HERO_DESCRIPTION =
-  "mt-5 max-w-xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400";
+  "mt-4 max-w-xl text-sm leading-relaxed text-zinc-600 sm:mt-5 sm:text-base md:text-lg dark:text-zinc-400";
 
-const HERO_ACTIONS = "mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4";
+const HERO_ACTIONS =
+  "mt-8 flex flex-col flex-wrap items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-4 [&_a]:w-full [&_a]:sm:w-auto";
 
 const HERO_TRUST = "mt-10";
 
 const HERO_VISUAL_COL =
-  "relative flex min-h-[260px] w-full items-center justify-center lg:min-h-[420px]";
+  "relative flex min-h-[220px] w-full min-w-0 items-center justify-center sm:min-h-[260px] lg:min-h-[420px]";
 
 function StandardVisualCard({
   frameClass,
@@ -49,7 +50,7 @@ function StandardVisualCard({
 }) {
   return (
     <div className={`absolute inset-0 rounded-3xl p-px ${frameClass}`}>
-      <div className="flex h-full min-h-[240px] items-center justify-center rounded-[23px] bg-white/90 p-6 shadow-2xl shadow-zinc-900/5 backdrop-blur dark:bg-zinc-900/90 dark:shadow-black/40 sm:p-8 lg:min-h-[400px]">
+      <div className="flex h-full min-h-[200px] items-center justify-center rounded-[23px] bg-white/90 p-5 shadow-2xl shadow-zinc-900/5 backdrop-blur dark:bg-zinc-900/90 dark:shadow-black/40 sm:min-h-[240px] sm:p-8 lg:min-h-[400px]">
         {children}
       </div>
     </div>
@@ -342,7 +343,7 @@ export function OutagesServiceHero(props: ServiceHeroContent) {
 
         <div className={HERO_VISUAL_COL}>
           <div className="absolute inset-0 rounded-3xl border border-zinc-200 bg-zinc-50/80 p-px dark:border-zinc-600 dark:bg-zinc-800/50">
-            <div className="flex h-full min-h-[240px] items-center justify-center rounded-[23px] bg-white p-6 shadow-lg dark:bg-zinc-900 sm:p-8 lg:min-h-[400px]">
+            <div className="flex h-full min-h-[200px] items-center justify-center rounded-[23px] bg-white p-5 shadow-lg dark:bg-zinc-900 sm:min-h-[240px] sm:p-8 lg:min-h-[400px]">
               {visual}
             </div>
           </div>

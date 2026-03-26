@@ -163,7 +163,7 @@ export function OutageHeroVisual() {
 
 export function TrustStripDefault() {
   return (
-    <ul className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-zinc-500 dark:text-zinc-500">
+    <ul className="flex flex-col gap-2 text-xs text-zinc-500 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-3 sm:text-sm dark:text-zinc-500">
       <li className="flex items-center gap-2">
         <span className="text-amber-500" aria-hidden>
           ★★★★★
